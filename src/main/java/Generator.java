@@ -85,6 +85,9 @@ public class Generator {
         try {
             BufferedImage bufferedImage = generateRandomImage("vrong",7,10,100);
             ImageIO.write(bufferedImage,"png",new File("testImage.png"));
+
+            bufferedImage = CharacterGenerator.generateRandomCharacterFace("vrong");
+            ImageIO.write(bufferedImage,"png",new File("VrongFace.png"));
         } catch (Exception e) {
             e.printStackTrace();
         }
