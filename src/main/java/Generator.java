@@ -5,7 +5,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * Created by Moi on 29/04/2017.
+ * Created by Ckram on 29/04/2017.
  */
 
 public class Generator {
@@ -58,24 +58,32 @@ public class Generator {
                     pixelColor = background;
                 for (int xx = 0; xx < magnificationRatio; xx++) {
                     for (int yy = 0; yy < magnificationRatio; yy++) {
+
                         identicon.setRGB(x * magnificationRatio + xx, y * magnificationRatio + yy, (255 << 24) | (pixelColor[0] << 16) | (pixelColor[1] << 8) | pixelColor[2]);
                     }
                 }
 
             }
         }
-
-
-
         return identicon;
     }
 
+    /**
+     *
+     * @param seed the seed to generate the image
+     * @param height number of pixel in height of the random image (max 16, min 1)
+     * @param width number of pixel in width of the random image (max 16, min 1)
+     * @return The image as a BufferedImage with no magnification
+     */
+    public static BufferedImage generateRandomImage(String seed, int height, int width){
+        return generateRandomImage(seed,height,width,1);
+    }
+
+
+
     public static void main(String[] args) {
-
-
         try {
-            BufferedImage bufferedImage = generateRandomImage("randomSeed",8,8,10);
-            //ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            BufferedImage bufferedImage = generateRandomImage("vrong",7,10,100);
             ImageIO.write(bufferedImage,"png",new File("testImage.png"));
         } catch (Exception e) {
             e.printStackTrace();
